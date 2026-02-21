@@ -28,6 +28,7 @@
 - ✅ **Echtzeit-Daten** direkt von der ÖBB HAFAS API
 - ✅ **Abfahrt ↔ Ankunft** umschaltbar mit einem Klick (☰ Button)
 - ✅ **Bus-Filter** (🚌 Button) - Busse ein/ausblenden nach Bedarf
+- ✅ **Wiener Linien Filter** (WL Button) - U-Bahn, Tram, Busse ausblenden (standardmäßig aus)
 - ✅ **Auto-Refresh** alle 15 Sekunden für aktuelle Daten
 - ✅ **Station-Suche** mit Autocomplete für alle österreichischen Bahnhöfe
 - ✅ **Letzte Station merken** - wird automatisch beim nächsten Start geladen
@@ -252,6 +253,12 @@ Wenn dir dieses Projekt gefällt, unterstütze mich gerne:
 ---
 
 ## 🗓️ Changelog
+
+### v1.1.0 (2026-02-21)
+- ✨ Add: Wiener Linien Toggle (WL Button)
+- 🚇 Filter für U-Bahn, Straßenbahn, Busse in Wien
+- 💾 State in localStorage gespeichert
+- 🎨 Standardmäßig ausgeblendet
 
 ### v1.0.0 (2026-02-21)
 - ✨ Initial Release
