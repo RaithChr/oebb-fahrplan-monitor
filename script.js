@@ -2,6 +2,30 @@ let refreshInterval;
 let timeInterval;
 let currentMode = 'dep'; // 'dep' für Abfahrt, 'arr' für Ankunft
 let showBuses = localStorage.getItem('oebb_show_buses') === 'true'; // Bus-Filter State
+let showWienerLinien = localStorage.getItem('oebb_show_wl') === 'true'; // WL-Filter State (default: false)
+
+// Prüfe ob es Wiener Linien sind (U-Bahn, Tram, Busse in Wien)
+function isWienerLinien(trainName, destination) {
+    const train = trainName.toUpperCase();
+    const dest = (destination || '').toUpperCase();
+    
+    // U-Bahn (U1, U2, U3, U4, U6)
+    if (train.startsWith('U') && /^U[1-6]/.test(train)) {
+        return true;
+    }
+    
+    // Straßenbahn (Tram)
+    if (train.includes('TRAM')) {
+        return true;
+    }
+    
+    // Busse in Wien
+    if (train.includes('BUS') && dest.includes('WIEN')) {
+        return true;
+    }
+    
+    return false;
+}
 
 // Zugtyp-Emoji
 function getTrainTypeEmoji(trainName) {
@@ -173,6 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBusButtonState(); // Initial state
     }
     
+    // Wiener Linien Toggle Button
+    const wlToggle = document.getElementById('wl-toggle');
+    if (wlToggle) {
+        wlToggle.addEventListener('click', toggleWienerLinien);
+        updateWLButtonState(); // Initial state
+    }
+    
     loadDepartures();
     startAutoRefresh();
     updateTime();
@@ -275,6 +306,26 @@ function updateBusButtonState() {
     }
 }
 
+function toggleWienerLinien() {
+    showWienerLinien = !showWienerLinien;
+    localStorage.setItem('oebb_show_wl', showWienerLinien);
+    updateWLButtonState();
+    loadDepartures();
+}
+
+function updateWLButtonState() {
+    const wlToggle = document.getElementById('wl-toggle');
+    if (wlToggle) {
+        if (showWienerLinien) {
+            wlToggle.classList.add('active');
+            wlToggle.style.opacity = '1';
+        } else {
+            wlToggle.classList.remove('active');
+            wlToggle.style.opacity = '0.4';
+        }
+    }
+}
+
 function updateTime() {
     timeInterval = setInterval(() => {
         const now = new Date();
@@ -334,15 +385,25 @@ function displayDepartures(data) {
         return;
     }
     
-    // Filtere Busse nur wenn Toggle AUS ist
-    const trains = showBuses 
-        ? data.journey 
-        : data.journey.filter(dep => !dep.pr.toLowerCase().includes('bus'));
+    // Filtere nach Toggles
+    let filtered = data.journey;
     
-    if (trains.length === 0) {
+    // Busse filtern (wenn Toggle AUS)
+    if (!showBuses) {
+        filtered = filtered.filter(dep => !dep.pr.toLowerCase().includes('bus'));
+    }
+    
+    // Wiener Linien filtern (wenn Toggle AUS)
+    if (!showWienerLinien) {
+        filtered = filtered.filter(dep => !isWienerLinien(dep.pr, dep.lastStop));
+    }
+    
+    if (filtered.length === 0) {
         tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Keine Züge/Busse gefunden</td></tr>';
         return;
     }
+    
+    const trains = filtered;
     
     trains.forEach(dep => {
         const row = document.createElement('tr');

@@ -46,6 +46,9 @@
                     <button id="bus-toggle" class="bus-toggle-btn" title="Busse ein/ausblenden">
                         🚌
                     </button>
+                    <button id="wl-toggle" class="wl-toggle-btn" title="Wiener Linien ein/ausblenden">
+                        WL
+                    </button>
                 </div>
             </div>
             <div class="header-right">
