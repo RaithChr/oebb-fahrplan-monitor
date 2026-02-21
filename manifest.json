@@ -1,0 +1,24 @@
+{
+  "name": "ÖBB Abfahrtsmonitor",
+  "short_name": "ÖBB Monitor",
+  "description": "Echtzeit-Abfahrten österreichischer Bahnhöfe",
+  "start_url": "/oebb/",
+  "display": "standalone",
+  "background_color": "#0033aa",
+  "theme_color": "#0033aa",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/oebb/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/oebb/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

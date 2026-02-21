@@ -1,0 +1,55 @@
+# ÖBB Fahrplan Monitor - Git Ignore
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+access_log
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Node (if used for dev tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# PHP
+vendor/
+composer.lock
+
+# Backups
+*.gz
+*.zip
+*.tar
+backups/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Git
+.git/

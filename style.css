@@ -1,0 +1,512 @@
+.delay-col {
+    color: #ffdd00 !important;
+    font-size: 1.6rem;
+    font-weight: bold !important;
+}
+
+.info-col {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #ffdd00 !important;
+}
+
+.delay {
+    color: #ffdd00 !important;
+    font-weight: bold !important;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background: #0033aa;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0;
+    background: #0033aa;
+    padding: 5px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ffffff;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-left > .mode-toggle-btn {
+    align-self: flex-start;
+    margin-top: 5px;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffdd00;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1;
+    padding: 0;
+}
+
+
+.header-subtitle {
+    font-size: 1.5rem;
+    color: #ffdd00;
+    font-style: italic;
+    margin: 0;
+    padding-left: 0;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.current-time {
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: bold; }
+
+
+.oebb-logo {
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: bold; }
+
+
+.station-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.station-selector label {
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.station-selector input {
+    padding: 8px 12px;
+    font-size: 1rem;
+    background: #ffffff;
+    border: none;
+    color: #000;
+    border-radius: 3px;
+    outline: none;
+    min-width: 250px;
+}
+
+.station-selector button {
+    padding: 8px 20px;
+    font-size: 1rem;
+    background: #ffdd00;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold; }
+
+
+.station-selector button:hover {
+    background: #ffee33;
+}
+
+.station-info {
+    display: none;
+}
+
+#departures-container {
+    overflow-x: auto;
+}
+
+#departures-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0033aa;
+}
+
+#departures-table thead {
+    background: #0033aa;
+}
+
+#departures-table th {
+    padding: 4px 6px;
+    text-align: left;
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: normal;
+    border-bottom: 2px solid #ffffff;
+}
+
+#departures-table th:first-child {
+    text-align: left;
+}
+
+#departures-table th:last-child {
+    text-align: right;
+}
+
+.th-bilingual {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+}
+
+.th-de {
+    font-weight: bold; }
+
+
+.th-en {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+#departures-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: #0055ee;
+}
+
+#departures-table tbody tr:nth-child(even) {
+    background: #0033aa;
+}
+
+#departures-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#departures-table td {
+    padding: 5px 6px;
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+
+.time-col {
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+
+
+.train-col {
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.destination-col {
+    font-size: 1.2rem;
+}
+
+
+.platform-col {
+    text-align: right;
+    font-size: 2.2rem;
+}
+
+
+.error {
+    color: #ffdd00;
+}
+
+footer {
+    margin-top: 5px;
+    padding: 5px 8px;
+    background: #ffdd00;
+    color: #000000;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Responsive - Portrait Mode */
+@media (max-width: 768px) and (orientation: portrait) {
+    .container {
+        padding: 10px;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .header-left {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .header-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .current-time {
+        font-size: 1.8rem;
+    }
+    
+    .station-selector {
+        width: 100%;
+        flex-direction: row;
+        justify-content: stretch;
+    }
+    
+    .station-selector input {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .station-selector button {
+        padding: 8px 15px;
+    }
+    
+    #departures-table {
+        font-size: 0.85rem;
+    }
+    
+    #departures-table th {
+        padding: 6px 3px;
+        font-size: 0.75rem;
+    }
+    
+    #departures-table td {
+        padding: 8px 3px;
+    }
+    
+    .th-bilingual {
+        line-height: 1.2;
+    }
+    
+    .th-en {
+        font-size: 0.7rem;
+    }
+    
+    .time-col {
+        font-size: 1rem;
+    }
+    
+    .delay-col { color: #ffdd00 !important;
+        font-size: 1rem;
+    }
+    
+    .train-col {
+        font-size: 0.95rem;
+    }
+    
+    .destination-col {
+        font-size: 0.9rem;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .info-col {
+        font-size: 0.8rem;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .platform-col {
+        font-size: 1.5rem;
+    }
+    
+    footer {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+}
+
+/* Responsive - Landscape Mode */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .current-time {
+        font-size: 1.3rem;
+    }
+    
+    #departures-table th {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+    
+    #departures-table td {
+        font-size: 0.9rem;
+        padding: 6px 5px;
+    }
+    
+    .time-col {
+        font-size: 1rem;
+    }
+    
+    .platform-col {
+        font-size: 1.3rem;
+    }
+}
+/* Force Update 1771653790 */
+
+/* ÖBB-spezifische Styles */
+.cancelled {
+    color: #ffdd00 !important;
+    font-weight: bold;
+}
+
+/* Mode Toggle Button */
+.mode-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    color: #ffdd00;
+    font-size: 2.5rem;
+    line-height: 1;
+    display: inline-block;
+}
+
+.mode-toggle-btn:hover {
+    opacity: 0.7;
+}
+
+.toggle-icon {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 0.8;
+}
+
+/* Bus Toggle Button */
+.bus-toggle-btn {
+    padding: 8px 15px;
+    font-size: 1.5rem;
+    background: #003d7a;
+    color: #ffdd00;
+    border: 2px solid #ffdd00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    opacity: 0.4;
+}
+
+.bus-toggle-btn.active {
+    background: #ffdd00;
+    color: #001a33;
+    opacity: 1;
+}
+
+.bus-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Grünes Theme für Ankunft (wird via JS Klasse aktiviert) */
+body.arrival-mode,
+.arrival-mode .container {
+    background: #004d00;
+}
+
+.arrival-mode #departures-table tbody tr {
+    background: #004d00;
+}
+
+.arrival-mode #departures-table tbody tr:nth-child(even) {
+    background: #006600;
+}
+
+.arrival-mode #departures-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Operator Logos - verschiedene Betreiber */
+.operator-logo {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.7em;
+    font-weight: bold;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+/* ÖBB - Rot */
+.operator-logo.oebb {
+    background: #e30613;
+    color: #ffffff;
+}
+
+/* Westbahn - Grün */
+.operator-logo.westbahn {
+    background: #00a651;
+    color: #ffffff;
+}
+
+/* Deutsche Bahn - Rot */
+.operator-logo.db {
+    background: #ec0016;
+    color: #ffffff;
+}
+
+/* Wiener Linien - Blau */
+.operator-logo.wiener-linien {
+    background: #0072bb;
+    color: #ffffff;
+}
+
+.delay-info {
+    color: #ffdd00;
+    font-weight: bold;
+}
