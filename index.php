@@ -36,7 +36,10 @@
                     <span class="toggle-icon">☰</span>
                 </button>
                 <div class="header-title">
-                    <h1 id="mode-title">Abfahrt</h1>
+                    <div class="title-row">
+                        <h1 id="mode-title">Abfahrt</h1>
+                        <img src="qr-code.png" alt="QR-Code" class="header-qr" title="Scan für https://craith.cloud/oebb/">
+                    </div>
                     <span class="header-subtitle" id="mode-subtitle">Departure</span>
                 </div>
                 <div class="station-selector">

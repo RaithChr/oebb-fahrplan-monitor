@@ -63,6 +63,12 @@ header {
     align-items: flex-start;
 }
 
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 h1 {
     font-size: 2.5rem;
     color: #ffdd00;
@@ -83,6 +89,21 @@ h1 {
 
 .header-right {
     text-align: right;
+}
+
+.header-qr {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.header-qr:hover {
+    transform: scale(1.1);
 }
 
 .current-time {
@@ -284,6 +305,11 @@ footer p {
         align-items: center;
     }
     
+    .header-qr {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+    
     .current-time {
         font-size: 1.8rem;
     }
@@ -369,6 +395,11 @@ footer p {
     
     h1 {
         font-size: 1.8rem;
+    }
+    
+    .header-qr {
+        height: 1.8rem;
+        width: 1.8rem;
     }
     
     .header-subtitle {
