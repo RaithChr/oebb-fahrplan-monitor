@@ -314,6 +314,11 @@ footer p {
         font-size: 1.8rem;
     }
     
+    .donate-btn {
+        padding: 6px 8px;
+        font-size: 1rem;
+    }
+    
     .station-selector {
         width: 100%;
         flex-direction: row;
@@ -507,6 +512,47 @@ footer p {
 .wl-toggle-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 0 10px rgba(0, 114, 187, 0.5);
+}
+
+/* Spenden-Buttons */
+.donate-btn {
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donate-bmc {
+    background: #003d7a;
+    color: #ffdd00;
+    border-color: #ffdd00;
+}
+
+.donate-bmc:hover {
+    background: #ffdd00;
+    color: #001a33;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(255, 221, 0, 0.5);
+}
+
+.donate-paypal {
+    background: #003d7a;
+    color: #0070ba;
+    border-color: #0070ba;
+}
+
+.donate-paypal:hover {
+    background: #0070ba;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 112, 186, 0.5);
 }
 
 /* Grünes Theme für Ankunft (wird via JS Klasse aktiviert) */

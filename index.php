@@ -13,6 +13,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ÖBB Monitor">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="apple-touch-icon" href="icon-192.png">
     
     <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
@@ -52,6 +53,8 @@
                     <button id="wl-toggle" class="wl-toggle-btn" title="Wiener Linien ein/ausblenden">
                         WL
                     </button>
+                    <a href="https://www.buymeacoffee.com/christianraith" target="_blank" class="donate-btn donate-bmc" title="Buy Me A Coffee">☕</a>
+                    <a href="https://paypal.me/christianraith151" target="_blank" class="donate-btn donate-paypal" title="PayPal Spende">💳</a>
                 </div>
             </div>
             <div class="header-right">
