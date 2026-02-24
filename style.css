@@ -120,12 +120,32 @@ h1 {
 
 .station-selector {
     display: flex;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
     margin-bottom: 20px;
     padding: 10px;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+}
+
+.station-input-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+}
+
+.station-input-row input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.station-buttons-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .station-selector label {
@@ -321,17 +341,33 @@ footer p {
     
     .station-selector {
         width: 100%;
-        flex-direction: row;
-        justify-content: stretch;
+        flex-direction: column;
+        gap: 10px;
     }
     
-    .station-selector input {
+    .station-input-row {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .station-input-row input {
         flex: 1;
         min-width: 0;
     }
     
+    .station-buttons-row {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
     .station-selector button {
-        padding: 8px 15px;
+        padding: 8px 12px;
     }
     
     #departures-table {

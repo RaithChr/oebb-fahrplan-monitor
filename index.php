@@ -44,17 +44,21 @@
                     <span class="header-subtitle" id="mode-subtitle">Departure</span>
                 </div>
                 <div class="station-selector">
-                    <input type="text" id="station" value="Wiener Neustadt" placeholder="Station eingeben..." list="station-suggestions" autocomplete="off">
-                    <datalist id="station-suggestions"></datalist>
-                    <button onclick="loadDepartures()">↻</button>
-                    <button id="bus-toggle" class="bus-toggle-btn" title="Busse ein/ausblenden">
-                        🚌
-                    </button>
-                    <button id="wl-toggle" class="wl-toggle-btn" title="Wiener Linien ein/ausblenden">
-                        WL
-                    </button>
-                    <a href="https://www.buymeacoffee.com/christianraith" target="_blank" class="donate-btn donate-bmc" title="Buy Me A Coffee">☕</a>
-                    <a href="https://paypal.me/christianraith151" target="_blank" class="donate-btn donate-paypal" title="PayPal Spende">💳</a>
+                    <div class="station-input-row">
+                        <input type="text" id="station" value="Wiener Neustadt" placeholder="Station eingeben..." list="station-suggestions" autocomplete="off">
+                        <datalist id="station-suggestions"></datalist>
+                    </div>
+                    <div class="station-buttons-row">
+                        <button onclick="loadDepartures()">↻</button>
+                        <button id="bus-toggle" class="bus-toggle-btn" title="Busse ein/ausblenden">
+                            🚌
+                        </button>
+                        <button id="wl-toggle" class="wl-toggle-btn" title="Wiener Linien ein/ausblenden">
+                            WL
+                        </button>
+                        <a href="https://www.buymeacoffee.com/christianraith" target="_blank" class="donate-btn donate-bmc" title="Buy Me A Coffee">☕</a>
+                        <a href="https://paypal.me/christianraith151" target="_blank" class="donate-btn donate-paypal" title="PayPal Spende">💳</a>
+                    </div>
                 </div>
             </div>
             <div class="header-right">
