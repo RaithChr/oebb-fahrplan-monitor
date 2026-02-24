@@ -218,6 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Auto-Complete für Stationen
+    // Umlaut-Normalisierung für ÖBB API
+    function normalizeForSearch(text) {
+        return text
+            .replace(/ä/g, 'a').replace(/Ä/g, 'A')
+            .replace(/ö/g, 'o').replace(/Ö/g, 'O')
+            .replace(/ü/g, 'u').replace(/Ü/g, 'U')
+            .replace(/ß/g, 'ss');
+    }
+
     let autocompleteTimeout;
     stationInput.addEventListener('input', (e) => {
         clearTimeout(autocompleteTimeout);
@@ -229,7 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         autocompleteTimeout = setTimeout(() => {
-            fetch(`autocomplete.php?q=${encodeURIComponent(query)}`)
+            // Normalisiere Umlaute für die Suche
+            const searchQuery = normalizeForSearch(query);
+            fetch(`autocomplete.php?q=${encodeURIComponent(searchQuery)}`)
                 .then(response => response.json())
                 .then(stations => {
                     const datalist = document.getElementById('station-suggestions');
