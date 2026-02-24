@@ -46,8 +46,8 @@ self.addEventListener('fetch', event => {
         // Clone der Response für Cache
         const responseClone = response.clone();
         
-        // Nur erfolgreiche Responses cachen
-        if (response.status === 200) {
+        // Nur erfolgreiche Responses und nur http/https URLs cachen
+        if (response.status === 200 && (event.request.url.startsWith('http://') || event.request.url.startsWith('https://'))) {
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, responseClone);
           });
