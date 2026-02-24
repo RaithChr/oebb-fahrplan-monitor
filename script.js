@@ -240,11 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
         autocompleteTimeout = setTimeout(() => {
             // Normalisiere Umlaute für die Suche
             const searchQuery = normalizeForSearch(query);
-            console.log('Autocomplete - Input:', query, '| Normalized:', searchQuery);
             fetch(`autocomplete.php?q=${encodeURIComponent(searchQuery)}`)
                 .then(response => response.json())
                 .then(stations => {
-                    console.log('Autocomplete results:', stations);
                     const datalist = document.getElementById('station-suggestions');
                     datalist.innerHTML = '';
                     
