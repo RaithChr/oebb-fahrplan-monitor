@@ -4,6 +4,15 @@ let currentMode = 'dep'; // 'dep' für Abfahrt, 'arr' für Ankunft
 let showBuses = localStorage.getItem('oebb_show_buses') === 'true'; // Bus-Filter State
 let showWienerLinien = localStorage.getItem('oebb_show_wl') === 'true'; // WL-Filter State (default: false)
 
+// Umlaut-Normalisierung für ÖBB API
+function normalizeForSearch(text) {
+    return text
+        .replace(/ä/g, 'a').replace(/Ä/g, 'A')
+        .replace(/ö/g, 'o').replace(/Ö/g, 'O')
+        .replace(/ü/g, 'u').replace(/Ü/g, 'U')
+        .replace(/ß/g, 'ss');
+}
+
 // Prüfe ob es Wiener Linien sind (U-Bahn, Tram, Busse in Wien)
 function isWienerLinien(trainName, destination) {
     const train = trainName.toUpperCase();
@@ -218,15 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Auto-Complete für Stationen
-    // Umlaut-Normalisierung für ÖBB API (nur Umlaute, keine ae/oe/ue!)
-    function normalizeForSearch(text) {
-        return text
-            .replace(/ä/g, 'a').replace(/Ä/g, 'A')
-            .replace(/ö/g, 'o').replace(/Ö/g, 'O')
-            .replace(/ü/g, 'u').replace(/Ü/g, 'U')
-            .replace(/ß/g, 'ss');
-    }
-
     let autocompleteTimeout;
     stationInput.addEventListener('input', (e) => {
         clearTimeout(autocompleteTimeout);
@@ -350,14 +350,17 @@ function updateTime() {
 }
 
 function loadDepartures() {
-    const station = document.getElementById('station').value.trim();
+    let station = document.getElementById('station').value.trim();
     
     if (!station) {
         showError('Bitte eine Station eingeben!');
         return;
     }
     
-    // Speichere Station in localStorage
+    // Normalisiere Umlaute für ÖBB API
+    station = normalizeForSearch(station);
+    
+    // Speichere Station in localStorage (mit Normalisierung)
     localStorage.setItem('oebb_last_station', station);
     
     // Reset countdown
