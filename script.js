@@ -218,12 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Auto-Complete für Stationen
-    // Umlaut-Normalisierung für ÖBB API
+    // Umlaut-Normalisierung für ÖBB API (deutsche Standardumschreibung)
     function normalizeForSearch(text) {
         return text
-            .replace(/ä/g, 'a').replace(/Ä/g, 'A')
-            .replace(/ö/g, 'o').replace(/Ö/g, 'O')
-            .replace(/ü/g, 'u').replace(/Ü/g, 'U')
+            .replace(/ä/g, 'ae').replace(/Ä/g, 'Ae')
+            .replace(/ö/g, 'oe').replace(/Ö/g, 'Oe')
+            .replace(/ü/g, 'ue').replace(/Ü/g, 'Ue')
             .replace(/ß/g, 'ss');
     }
 
