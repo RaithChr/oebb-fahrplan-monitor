@@ -405,6 +405,54 @@ function displayDepartures(data) {
     
     const trains = filtered;
     
+    // === ANALYSIERE SYSTEMWARNUNGEN ===
+    let cancelled = 0;
+    let delayed = 0;
+    let onTime = 0;
+    
+    trains.forEach(dep => {
+        const isCancelled = dep.rt && typeof dep.rt === 'object' && dep.rt.status === 'Ausfall';
+        const isDelayed = dep.rt && typeof dep.rt === 'object' && dep.rt.dlm && dep.rt.dlm > 0;
+        
+        if (isCancelled) {
+            cancelled++;
+        } else if (isDelayed) {
+            delayed++;
+        } else {
+            onTime++;
+        }
+    });
+    
+    // Generiere Warnung basierend auf Statistiken
+    const totalTrains = trains.length;
+    const delayedPercent = (delayed / totalTrains) * 100;
+    const cancelledPercent = (cancelled / totalTrains) * 100;
+    
+    let warningText = '';
+    let warningBg = '#ffdd00'; // Standard gelb
+    
+    if (cancelledPercent > 20) {
+        warningText = `⚠️ Mehrere Zugausfälle gemeldet (${cancelled}/${totalTrains})`;
+        warningBg = '#ff6b00'; // Orange-rot
+    } else if (delayedPercent > 50) {
+        warningText = `⏱️ Viele Züge mit Verspätung (${delayed}/${totalTrains})`;
+        warningBg = '#ffaa00'; // Orange
+    } else if (cancelled > 0 || delayed > 0) {
+        warningText = `ℹ️ ${cancelled} Ausfällle, ${delayed} Verspätungen - ${onTime}/${totalTrains} pünktlich`;
+        warningBg = '#ffdd00'; // Gelb
+    } else {
+        warningText = `✅ Alle Züge fahren planmäßig (${onTime}/${totalTrains})`;
+        warningBg = '#00dd00'; // Grün
+    }
+    
+    // Aktualisiere Footer
+    const footer = document.getElementById('footer-notice');
+    if (footer) {
+        footer.style.background = warningBg;
+        footer.innerHTML = '<p>' + warningText + '</p>';
+    }
+    // === ENDE SYSTEMWARNUNGEN ===
+    
     trains.forEach(dep => {
         const row = document.createElement('tr');
         
