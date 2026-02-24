@@ -32,7 +32,6 @@ if ($response) {
     if ($converted !== false) {
         $response = $converted;
     }
-    // Falls Konvertierung fehlschlägt, nutze Original
 }
 
 // Parse response (remove "SLs.sls=" prefix)
@@ -47,14 +46,11 @@ $data = json_decode($jsonData, true);
 if (json_last_error() !== JSON_ERROR_NONE || !isset($data['suggestions'])) {
     // Fallback: Versuche manuell die suggestions zu extrahieren
     if (preg_match('/"suggestions":\s*\[(.*?)\]/s', $jsonData, $matches)) {
-        // Extrahiere value-Felder
         preg_match_all('/"value":"([^"]+)"/', $matches[1], $valueMatches);
         $suggestions = array_map(function($v) { return ['name' => $v]; }, $valueMatches[1]);
         echo json_encode($suggestions, JSON_UNESCAPED_UNICODE);
         exit;
     }
-    // Debug: Log the error
-    error_log("Autocomplete error for query: $query, json_error: " . json_last_error_msg());
     echo json_encode([]);
     exit;
 }

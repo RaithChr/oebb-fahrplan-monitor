@@ -252,7 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         datalist.appendChild(option);
                     });
                 })
-                .catch(err => console.error('Autocomplete error:', err));
+                .catch(() => {
+                    // Fehler bei Autocomplete - keine Aktion nötig
+                });
         }, 300);
     });
 });
