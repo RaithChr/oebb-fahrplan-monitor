@@ -28,7 +28,11 @@ if (empty($response)) {
 
 // ÖBB API gibt ISO-8859-1 zurück, konvertiere zu UTF-8
 if ($response) {
-    $response = iconv('ISO-8859-1', 'UTF-8//TRANSLIT', $response);
+    $converted = @iconv('ISO-8859-1', 'UTF-8//IGNORE', $response);
+    if ($converted !== false) {
+        $response = $converted;
+    }
+    // Falls Konvertierung fehlschlägt, nutze Original
 }
 
 // Parse response (remove "SLs.sls=" prefix)
