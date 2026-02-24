@@ -31,17 +31,27 @@
 - ✅ **Wiener Linien Filter** (WL Button) - U-Bahn, Tram, Busse ausblenden (standardmäßig aus)
 - ✅ **Auto-Refresh** alle 15 Sekunden für aktuelle Daten
 - ✅ **Station-Suche** mit Autocomplete für alle österreichischen Bahnhöfe
+- ✅ **Umlaut-Normalisierung** - "Mödling" funktioniert genauso wie "Modling"
 - ✅ **Letzte Station merken** - wird automatisch beim nächsten Start geladen
+- ✅ **Dynamische Systemwarnungen** - zeigt Verspätungen, Ausfälle & Pünktlichkeit
+- ✅ **Spenden-Buttons** (☕ Buy Me A Coffee & 💳 PayPal)
 
 ### 🎨 Design & UX
 - ✅ **ÖBB-Original-Design** - Blau (#0033aa) für Abfahrt, Grün (#004d00) für Ankunft
 - ✅ **Zebra-Striping** für bessere Lesbarkeit
-- ✅ **Responsive** - optimiert für Mobile & Desktop
+- ✅ **Responsive Layout** - optimiert für Mobile & Desktop
+  - 🖥️ Desktop: Input + Buttons in einer Zeile
+  - 📱 Mobile: Input in separater Zeile, Buttons darunter
 - ✅ **Blinkende Status-Punkte** nach ÖBB-Legende:
   - 🟢 **Grün:** 3-5 Minuten bis Abfahrt
   - 🟡 **Gelb:** 0-2 Minuten (gleich geht's los!)
   - ⚪ **Weiß:** Bereit zum Einsteigen
   - 🔴 **Rot:** Zug fällt aus
+- ✅ **Dynamische Footer-Warnungen:**
+  - 🟢 **Grün:** Alle Züge fahren pünktlich
+  - 🟡 **Gelb:** Einzelne Ausfälle/Verspätungen
+  - 🟠 **Orange:** >50% Verspätungen
+  - 🟠 **Orange-Rot:** >20% Zugausfälle
 
 ### 🏢 Multi-Operator Support
 Automatische Erkennung und farbcodierte Logos für:
@@ -66,6 +76,19 @@ Automatische Erkennung und farbcodierte Logos für:
 - 🇨🇿 Tschechien (Prag, Brno)
 - 🇸🇰 Slowakei (Bratislava)
 - 🏔️ Alpine Regionen (Innsbruck, Salzburg, Kitzbühel)
+
+### 🔔 Intelligente Systemwarnungen
+
+Die Footer-Box zeigt automatisch Informationen basierend auf den echten Zugdaten:
+
+| Situation | Anzeige | Farbe | Beispiel |
+|-----------|---------|-------|----------|
+| **Alle pünktlich** | ✅ Alle Züge fahren planmäßig | 🟢 Grün | ✅ Alle Züge fahren planmäßig (12/12) |
+| **Einzelne Probleme** | ℹ️ Ausfälle & Verspätungen | 🟡 Gelb | ℹ️ 1 Ausfälle, 3 Verspätungen - 8/12 pünktlich |
+| **Viele Verspätungen** | ⏱️ >50% mit Verspätung | 🟠 Orange | ⏱️ Viele Züge mit Verspätung (8/12) |
+| **Mehrere Ausfälle** | ⚠️ >20% Zugausfälle | 🟠 Orange-Rot | ⚠️ Mehrere Zugausfälle gemeldet (4/12) |
+
+Diese Warnungen aktualisieren sich **live** bei jedem Laden und helfen dir, schnell das Verkehrschaos zu erkennen!
 
 ### 📱 Progressive Web App (PWA)
 - ✅ **Installierbar** als native App auf Android & iOS
@@ -162,6 +185,14 @@ https://deine-domain.de/oebb/
 - **API Response:** ~1-2 Sekunden
 - **Auto-Refresh:** 15 Sekunden Intervall
 
+### Smart Features
+- **Umlaut-Normalisierung:** Funktioniert mit ä/ö/ü
+  - Input: "Mödling" → API-Call: "Modling"
+  - Input: "Öblarn" → API-Call: "Oblarn"
+- **Encoding-Konvertierung:** ÖBB API (ISO-8859-1) → UTF-8
+- **Dynamische Warnungen:** Echtzeit-Analyse der Zugdaten
+- **Mobile-Responsive:** Separate Zeilen auf Portrait-Ansicht
+
 ---
 
 ## 📂 Projektstruktur
@@ -253,6 +284,18 @@ Wenn dir dieses Projekt gefällt, unterstütze mich gerne:
 ---
 
 ## 🗓️ Changelog
+
+### v1.2.0 (2026-02-24) 🚀 LATEST
+- ✨ **Umlaut-Normalisierung** für Stationssuche (ä→a, ö→o, ü→u)
+- 🔍 Autocomplete funktioniert mit Umlauten (Mödling, Öblarn, etc.)
+- ⚠️ **Dynamische Systemwarnungen** basierend auf Zugstatistiken
+  - Zeigt Verspätungsrate, Ausfallrate, Pünktlichkeit
+  - Farbcodierte Footer-Box (grün/gelb/orange/rot)
+- 📱 **Mobile Layout verbessert** - Input-Feld in separater Zeile
+- ☕ **Spenden-Buttons** - Buy Me A Coffee & PayPal Integration
+- 🔧 **Encoding-Fixes** - ISO-8859-1 → UTF-8 Konvertierung
+- 🛡️ **Service Worker Fix** - Chrome-Extension URLs werden nicht gecacht
+- 🧹 **Code Cleanup** - Debug-Logs und Test-Code entfernt
 
 ### v1.1.0 (2026-02-21)
 - ✨ Add: Wiener Linien Toggle (WL Button)
