@@ -44,6 +44,8 @@ if (json_last_error() !== JSON_ERROR_NONE || !isset($data['suggestions'])) {
         echo json_encode($suggestions, JSON_UNESCAPED_UNICODE);
         exit;
     }
+    // Debug: Log the error
+    error_log("Autocomplete error for query: $query, json_error: " . json_last_error_msg());
     echo json_encode([]);
     exit;
 }
